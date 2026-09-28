@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="id"><head><meta charset="utf-8"><title>JALAN HIDUP WNI</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<link href="https://fonts.googleapis.com/css2?family=Bungee&family=Fredoka:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);--bg:#fff;--fg:#111;--card:#fff;--ac:#ff3d7f;--ln:#111;--y:#ffe14d;--b:#5ad1ff;--g:#7dffb0}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0 auto;background:#fff radial-gradient(#0002 1.2px,transparent 1.3px) 0 0/16px 16px;color:var(--fg);font:16px/1.4 Fredoka,"Trebuchet MS",sans-serif;padding:10px;max-width:520px}
+h1{font:22px Bungee,Impact,sans-serif;margin:10px 4px 6px;text-align:center;background:var(--y);border:3px solid var(--ln);border-radius:14px;padding:8px;transform:rotate(-2deg);box-shadow:5px 5px 0 var(--ln)}
+.mq{overflow:hidden;white-space:nowrap;background:var(--ln);color:var(--y);border-radius:8px;font-size:13px;margin:10px 0;transform:rotate(.6deg)}
+.mq span{display:inline-block;padding-left:100%;animation:mq 22s linear infinite}
+@keyframes mq{to{transform:translateX(-100%)}}
+.c{background:var(--card);border:3px solid var(--ln);border-radius:18px;padding:12px;margin:12px 0;box-shadow:5px 5px 0 var(--ln)}
+.c:nth-of-type(odd){transform:rotate(-.5deg)}.c:nth-of-type(even){transform:rotate(.5deg)}
+button,input,select{font:inherit;padding:10px 14px;border-radius:14px;border:3px solid var(--ln);background:#fff;color:var(--fg);margin:4px 0}
+button{background:var(--ac);color:#fff;font-weight:600;cursor:pointer;box-shadow:4px 4px 0 var(--ln);transition:transform .1s,box-shadow .1s;text-shadow:1px 1px 0 #0006}
+button:hover{transform:rotate(-1.5deg) scale(1.03)}button:active{transform:translate(3px,3px);box-shadow:0 0 0 var(--ln)}
+button.g{background:#fff;color:var(--fg);text-shadow:none}button:disabled{opacity:.35;filter:grayscale(1)}
+button.big{width:100%;font:22px Bungee,Impact,sans-serif;padding:16px;background:var(--b);color:#111;text-shadow:none;animation:pl 1.2s infinite}
+@keyframes pl{50%{transform:scale(1.04) rotate(1deg)}}
+input,select{width:100%;box-sizing:border-box}input:focus,select:focus{outline:none;background:var(--y)}
+.r{display:flex;gap:8px;flex-wrap:wrap;align-items:center}.r>*{flex:1}
+.st{display:flex;justify-content:space-between;flex-wrap:wrap;gap:4px;align-items:center}
+.c .st{padding:4px 0;border-bottom:2px dashed #0003}
+.bar{width:100%;height:14px;border:3px solid var(--ln);border-radius:9px;background:#fff;overflow:hidden}
+.bar i{display:block;height:100%;background:repeating-linear-gradient(45deg,var(--ac) 0 8px,var(--y) 8px 16px);transition:width .6s}
+.dc{display:inline-block;animation:bn 1.4s infinite}
+@keyframes bn{50%{transform:translateY(-4px) rotate(20deg)}}
+.wb{animation:wb .9s infinite alternate}
+@keyframes wb{to{transform:scale(1.25)}}
+#ov{position:fixed;inset:0;background:#fffc;backdrop-filter:blur(3px);display:flex;align-items:center;justify-content:center;z-index:9;padding:20px}
+.cd{width:min(290px,90%);padding:20px;border:4px solid var(--ln);border-radius:20px;text-align:center;animation:pop .55s;box-shadow:8px 8px 0 var(--ln);transform:rotate(-3deg)}
+@keyframes pop{from{transform:rotateY(90deg) scale(.5) rotate(-20deg)}to{transform:rotate(-3deg)}}
+details summary{cursor:pointer;font-weight:600}
+.lg{font-size:13px;max-height:120px;overflow:auto}
+</style></head><body>
+<h1>🎲 JALAN HIDUP WNI 🇮🇩<br><small style="font:12px Fredoka">hidup itu absurd, main aja dulu</small></h1>
+<div class="mq"><span>🐔 AYAM LEPAS · 🪪 KTP HILANG · 🐟 ANDA ADALAH IKAN · 🚧 MACET · 🍜 SEMESTA MENYURUH ANDA MAKAN · 🇮🇩 PRESIDEN LEWAT · 📎 FOTOKOPI DULU ·</span></div>
+<div id="app"></div>
+<script>
+const $=s=>document.querySelector(s),esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c])),R=n=>Math.floor(Math.random()*n),pick=a=>a[R(a.length)],rp=n=>'Rp'+Math.round(n).toLocaleString('id-ID');
+let rm=null,S=null,host=false,code='',hist=[],lgSeen=0,tut=new Set(),cardSeen=0,shown=0,nm='',err='';
+const me={id:Math.random().toString(36).slice(2,8)};
+const TY='n p m e c a s j h b d g t r o l e m c a s j h b d g t r o f'.split(' ');
+const EX={2:14,4:22,8:20,15:26,13:6};
+const N=TY.map((t,i)=>{const r=Math.floor(i/6),c=i%6;return{t,x:r%2?330-c*60:30+c*60,y:40+r*100,nx:i<29?(EX[i]!=null?[i+1,EX[i]]:[i+1]):[]}});
+const IC={n:'🏠',p:'🏘️',m:'💰',e:'🎴',c:'🃏',a:'🏛️',s:'🏫',j:'💼',h:'🏥',b:'🛒',d:'🚨',g:'🎁',t:'🚗',r:'❓',o:'👥',l:'🧑‍⚖️',f:'🏁'};
+const CL={n:'#ddd',p:'#c9a',m:'#8d8',e:'#8cf',c:'#f8a',a:'#fc6',s:'#9cf',j:'#fa8',h:'#fbb',b:'#cf9',d:'#f66',g:'#fd6',t:'#adf',r:'#c9f',o:'#9fd',l:'#dc9',f:'#ff6'};
+const TT={n:'Tile biasa, gak ada apa-apa.',p:'Properti: dapat tempat tinggal.',m:'Uang: rezeki nomplok.',e:'Event: kejadian sehari-hari. Makin chaos, makin sering jadi kartu Chaos!',c:'Chaos: kartu paling random.',a:'Administrasi: urusan dokumen. Selesaikan 3 kartu untuk misi.',s:'Pendidikan: naikkan skill.',j:'Pekerjaan: dapat/ubah kerjaan. Gaji cair tiap giliranmu, tapi capek.',h:'Kesehatan: energi & kondisi.',b:'Belanja: khilaf itu wajar.',d:'Bahaya! Ada yang sial.',g:'Hadiah random.',t:'Transportasi: bisa maju, mundur, atau nyasar.',r:'Random: dadu takdir.',o:'Sosial: interaksi sama orang lain.',l:'Hukum: urusan ringan yang lucu.'};
+const IT=['📱 HP','🏍️ Motor (+1 dadu)','☂️ Payung','🪪 KTP','🎒 Tas','💻 Laptop','🎧 Headset','👛 Dompet','📚 Buku','🔑 Kunci Rumah','🍜 Makanan','🛒 Troli'];
+const J=[['Barista',40000,10],['Programmer',90000,20],['Guru',50000,10],['Kurir',45000,15],['Streamer',60000,15],['Animator',70000,15],['Pedagang',55000,12]];
+const D={
+e:[['DIAJAK TEMAN MAKAN',{m:50000,h:10}],['LUPA BAWA DOMPET',{m:-20000}],['DAPAT PAKET (gak ada yang beli)',{it:1}],['DISURUH ORANG TUA',{sk:1,r:20}],['NEMU KUCING LUCU',{h:15}]],
+c:[['SEMUA SALAH. Kamu kena -Rp50.000. Tanpa alasan.',{m:-50000}],['AYAM LEPAS! Semua mundur 1 tile',{all:{mv:-1}}],['INTERNET MATI. Semua -10 energi',{all:{e:-10}}],['TERNYATA HARI INI LIBUR. Semua +10 happy',{all:{h:10}}],['SALAH MASUK GRUP',{r:-20}],['ORANG RANDOM MEMBERI UANG',{m:100000}],['ANDA ADALAH IKAN.',{}],['PRESIDEN LEWAT.',{}],['ANDA LUPA KENAPA BERDIRI DI SINI',{mv:-2}],['SEMESTA MENYURUH ANDA MAKAN',{h:10}]],
+m:[['DAPAT BONUS',{m:150000}],['DIBAYAR UTANG',{m:100000}],['MENANG GIVEAWAY',{m:250000}],['NEMU UANG DI SAKU',{m:25000}],['DIBERI MAKAN',{h:20}]],
+d:[['BAN BOCOR',{m:-50000}],['HP RUSAK',{m:-30000,h:-5}],['TAGIHAN DATANG',{m:-100000}],['KEHUJANAN',{e:-10,k:-5}]],
+a:[['FOTOKOPI DULU',{m:-5000}],['FORMULIR KURANG SATU',{e:-5,r:-3}],['SALAH NOMOR. Mundur 2',{mv:-2}],['SEMUA DOKUMEN LENGKAP',{r:20,ad:1}],['KTP HILANG',{m:-30000,sk:1}]],
+s:[['UJIAN MENDADAK (abaikan jika Pendidikan ≥50)',{e:-20,ig:1}],['BELAJAR HAL BARU',{ed:20}],['DAPAT SERTIFIKAT',{ed:30}],['LUPA NGERJAIN TUGAS',{r:-10}]],
+j:[['DITERIMA KERJA',{job:1}],['NAIK GAJI x1.5',{pay:1}],['KERJA SAMPINGAN',{m:80000,e:-10}],['RESIGN (+30 happy)',{nojob:1,h:30}],['ATASAN CHAT DI LUAR JAM KERJA',{h:-20}]],
+h:[['KELELAHAN',{e:-20}],['ISTIRAHAT',{e:30}],['PERIKSA KESEHATAN',{m:-50000,k:20}],['MAKAN TERATUR',{k:20}]],
+b:[['DISKON BESAR: barang gratis',{it:1}],['KHILAF BELANJA',{m:-100000,it:1}],['BARANG TERNYATA NGGAK DIBUTUHKAN',{h:-20}]],
+t:[['MACET. Mundur 1',{mv:-1}],['JALAN LANCAR. Maju 2',{mv:2}],['NYASAR. Pindah tile random',{tp:1}],['DAPAT TUMPANGAN. Teleport ke pemain lain',{tpp:1}]],
+o:[['TRAKTIR TEMAN',{m:-50000,r:30}],['BANTU TEMAN. Semua +10 happy',{all:{h:10}}],['RIBUT KECIL. Semua -10 reputasi',{all:{r:-10}}]],
+r:[['LEMPAR DADU TAKDIR',{dice:1}]],p:[['NGONTRAK RUMAH',{m:-40000,k:10,h:10}]]};
+const DK={e:'e',c:'c',m:'m',g:'m',d:'d',a:'a',l:'a',s:'s',j:'j',h:'h',b:'b',t:'t',o:'o',r:'r',p:'p'};
+const GL=[['EKONOMI NAIK: semua +Rp50.000',{m:50000}],['HARGA NAIK: semua -Rp30.000',{m:-30000}],['HARI HUJAN: semua -10 energi',{e:-10}],['LIBUR NASIONAL: semua +20 happy',{h:20}],['GRAVITASI RUSAK: semua mundur 3',{mv:-3}]];
+const MS=[['JADI ORANG KAYA (Rp1.000.000)',p=>p.m>=1e6],['HIDUP SANTAI (happy ≥100)',p=>p.h>=100],['KOLEKTOR (6 item)',p=>p.it.length>=6],['RAJA JALANAN (12 tile)',p=>p.vis.length>=12],['ADMINISTRASI SELESAI (3 kartu)',p=>p.ad>=3],['PEKERJA (punya kerja)',p=>p.job!=null]];
+const MODE={NORMAL:[12,1],CHAOS:[12,1.6],'ULTRA CHAOS':[12,2.2],SPEEDRUN:[6,1.2],'LONG LIFE':[20,1]};
+
+async function conn(c){const room=await claude.use('room');if(!room){err='Room online belum tersedia. Buka lewat akun claude.ai.';return draw()}
+ rm=room.join?await room.join(c.toLowerCase().replace(/[^a-z0-9]/g,'-')):room;code=c;
+ rm.on('st',m=>{if(!host){S=m.data;draw()}});rm.on('act',m=>{if(host)handle(m.data)});
+ setInterval(()=>{if(host&&S)rm.emit('st',S);else if(!S||!S.p.find(p=>p.id==me.id))rm.emit('act',{t:'join',id:me.id,n:nm})},3000);
+ if(!host)rm.emit('act',{t:'join',id:me.id,n:nm});draw()}
+function mk(id,n){return{id,n,pos:0,m:300000,k:80,r:50,h:50,e:80,ed:10,job:null,pay:1,it:[],sk:0,vis:[0],ms:[],cards:0,bad:0,mvd:0,ad:0,rdy:false}}
+function create(){nm=$('#nm').value.trim()||'Pemain';host=true;const c='WNI-'+Math.random().toString(36).slice(2,6).toUpperCase(),md=$('#md').value;
+ S={ph:'lobby',rn:$('#rn').value||'Room WNI',md,max:+$('#mx').value,mx:MODE[md][0],cf:MODE[md][1],rd:1,i:0,ch:0,mv:0,cn:0,lc:0,lg:[],card:null,p:[mk(me.id,nm)]};S.p[0].rdy=true;conn(c)}
+function join(){nm=$('#nm').value.trim()||'Pemain';const c=$('#cd').value.trim().toUpperCase();if(!c)return;conn(c)}
+function send(t,x){rm.emit('act',{t,id:me.id,...x});}
+function lg(t){S.lg.push([++S.lc,t]);S.lg=S.lg.slice(-6)}
+function bc(){S.lg.forEach(l=>{if(!hist.find(h=>h[0]==l[0]))hist.push(l)});if(rm)rm.emit('st',S);draw()}
+const cl=(p)=>{['k','r','e','ed'].forEach(k=>p[k]=Math.max(0,Math.min(100,p[k])));p.h=Math.max(0,Math.min(150,p.h))};
+function apply(p,e){if(e.all){S.p.forEach(q=>apply(q,e.all));}
+ if(e.ig&&p.ed>=50)e={};
+ ['m','k','r','e','ed','h'].forEach(k=>{if(e[k])p[k]+=e[k]});if(e.m<0||e.e<0||e.h<0||e.r<0)p.bad++;
+ if(e.mv)p.pos=Math.max(0,Math.min(28,p.pos+e.mv));if(e.sk)p.sk+=e.sk;if(e.ad)p.ad+=e.ad;
+ if(e.it){const i=R(IT.length);p.it.includes(i)||p.it.push(i)}if(e.job)p.job=R(J.length);if(e.nojob)p.job=null;if(e.pay)p.pay=1.5;
+ if(e.tp)p.pos=R(29);if(e.tpp){const o=S.p.filter(q=>q!=p);if(o.length)p.pos=pick(o).pos}
+ if(e.dice){const d=1+R(6);p.m+=d<=2?-100000:d<=4?0:d==5?100000:300000;S.dr=d}
+ if(!p.vis.includes(p.pos))p.vis.push(p.pos);cl(p)}
+function handle(a){if(!S)return;const cur=S.p[S.i],p=S.p.find(q=>q.id==a.id);
+ if(a.t=='join'){if(S.ph=='lobby'&&!p&&S.p.length<S.max){S.p.push(mk(a.id,String(a.n).slice(0,14)));bc()}return}
+ if(!p)return;
+ if(a.t=='rdy'&&S.ph=='lobby'){p.rdy=!p.rdy;return bc()}
+ if(a.t=='go'&&S.ph=='lobby'&&p==S.p[0]&&S.p.length>=2&&S.p.every(q=>q.rdy)){S.p.forEach(q=>{q.ms=[R(3),3+R(3)]});S.ph='x';S.rd=1;S.i=0;lg('Game dimulai! Selamat menjalani hidup.');return turn()}
+ if(p!=cur)return;
+ if(a.t=='roll'&&S.ph=='roll'){const d=1+R(6)+(p.it.includes(1)?1:0);S.dice=d;S.mv=d;lg(p.n+' melempar dadu: '+d);return step(p)}
+ if(a.t=='path'&&S.ph=='path'){const nx=N[p.pos].nx;if(nx[a.i]==null)return;p.pos=nx[a.i];S.mv--;p.mvd++;if(p.pos==29)return fin();return step(p)}
+ if(a.t=='ok'&&S.ph=='card')return nxt()}
+function step(p){while(S.mv>0){const nx=N[p.pos].nx;if(nx.length>1){S.ph='path';return bc()}p.pos=nx[0];S.mv--;p.mvd++;if(p.pos==29)return fin()}land(p)}
+function land(p){const t=N[p.pos].t;if(!p.vis.includes(p.pos))p.vis.push(p.pos);let dk=DK[t],c;
+ if(!dk)c=['Tile biasa. Nikmati pemandangan.',{}];else{if(dk=='e'&&R(100)<S.ch)dk='c';c=pick(D[dk]);S.dr=0;apply(p,c[1]);p.cards++}
+ let x=c[0];if(S.dr)x+=' 🎲'+S.dr;lg(p.n+': '+c[0]);S.card={id:++S.cn,t,x,w:p.n};S.ph='card';bc()}
+function nxt(){const n=S.p.length;for(let k=0;k<n;k++){S.i=(S.i+1)%n;if(S.i==0){rnd();if(S.ph=='end')return}const p=S.p[S.i];if(p.sk>0){p.sk--;lg(p.n+' kehilangan giliran.');continue}break}turn()}
+function rnd(){S.rd++;if(S.rd>S.mx)return fin();S.ch=Math.min(100,Math.round(S.rd/S.mx*100*S.cf));
+ if(S.rd%3==0){const g=pick(GL);S.p.forEach(q=>apply(q,g[1]));lg('🌎 EVENT GLOBAL: '+g[0])}
+ if(S.ch>=100){const ps=S.p.map(q=>q.pos).sort(()=>Math.random()-.5);S.p.forEach((q,i)=>q.pos=ps[i]);lg('🇮🇩 INDONESIA MODE: semua bertukar posisi!')}}
+function turn(){const p=S.p[S.i];if(p.job!=null){p.m+=J[p.job][1]*p.pay;p.e-=J[p.job][2]}
+ if(p.m<0){p.m+=50000;lg('🥺 MODE MISKIN: '+p.n+' dapat bantuan sosial Rp50.000')}cl(p);S.ph='roll';S.card=null;S.mv=0;bc()}
+function score(p){return Math.round(p.m/10000+p.ed+p.r+p.h+p.k/2+p.it.length*8+(p.job!=null?25:0)+p.ad*15+p.ms.filter(i=>MS[i][1](p)).length*100)}
+function fin(){S.ph='end';S.p.forEach(p=>p.sc=score(p));bc()}
+
+function draw(){const a=$('#app');
+ if(err)return a.innerHTML='<div class="c">'+esc(err)+'</div>';
+ if(!rm)return a.innerHTML=`<div class="c"><b>Hidup itu keras, makanya ada board game. 🤡</b><input id="nm" placeholder="NAMA PEMAIN" maxlength="14"><input id="rn" placeholder="Nama room"><div class="r"><select id="mx">${[2,3,4,5,6].map(n=>`<option ${n==4?'selected':''}>${n}</option>`).join('')}</select><select id="md">${Object.keys(MODE).map(m=>`<option>${m}</option>`).join('')}</select></div><button onclick="create()">CREATE ROOM</button></div><div class="c"><input id="cd" placeholder="KODE ROOM (WNI-7X92)"><button onclick="join()">JOIN ROOM</button></div><div class="c"><b>HOW TO PLAY</b><br>Lempar dadu, jalan di peta bercabang, dapat kartu absurd. Skor akhir dari uang, pendidikan, reputasi, happy, item, kerja, & 2 misi rahasia. Semua mekanik dijelaskan saat pertama kali ketemu. Chaos naik tiap ronde; di 100% masuk INDONESIA MODE.</div>`;
+ if(!S)return a.innerHTML='<div class="c">Masuk room '+esc(code)+'…</div>';
+ const mp=S.p.find(p=>p.id==me.id),cur=S.p[S.i],mine=cur&&cur.id==me.id;
+ if(S.ph=='lobby')return a.innerHTML=`<div class="c"><b>${esc(S.rn)}</b> · KODE: <b>${esc(code)}</b> · ${S.md} · ${S.p.length}/${S.max}</div><div class="c">${S.p.map((p,i)=>`PLAYER ${i+1} — ${esc(p.n)} <b>${i?p.rdy?'READY':'NOT READY':'HOST'}</b>`).join('<br>')}</div>${host?`<button onclick="send('go')" ${S.p.length>1&&S.p.every(p=>p.rdy)?'':'disabled'}>START GAME (min 2 pemain)</button>`:`<button onclick="send('rdy')">READY / NOT READY</button>`}`;
+ S.lg.forEach(l=>{if(!hist.find(h=>h[0]==l[0]))hist.push(l)});
+ let h=`<div class="c st"><b>ROUND ${S.rd}/${S.mx}</b><span class="dc">🎲 ${S.dice||'-'}</span><b>CHAOS: ${S.ch}%${S.ch>=100?' 🇮🇩':''}</b><div class="bar"><i style="width:${S.ch}%"></i></div></div>`;
+ h+=`<div class="c"><svg viewBox="0 0 360 480" width="100%"><rect width="360" height="480" fill="#fffbe6" rx="14"/>${N.map((n,i)=>n.nx.map(j=>`<line x1="${n.x}" y1="${n.y}" x2="${N[j].x}" y2="${N[j].y}" stroke="${j==i+1?'#111':'#ff3d7f'}" stroke-width="${j==i+1?5:4}" stroke-linecap="round" stroke-dasharray="${j==i+1?'':'2 8'}"/>`).join('')).join('')}${N.map(n=>`<circle cx="${n.x+3}" cy="${n.y+3}" r="19" fill="#111"/><circle cx="${n.x}" cy="${n.y}" r="19" fill="${CL[n.t]}" stroke="#111" stroke-width="3"/><text x="${n.x}" y="${n.y+6}" text-anchor="middle" font-size="16">${IC[n.t]}</text>`).join('')}${S.p.map((p,i)=>`<g class="tk" style="transform:translate(${N[p.pos].x+(i%3)*8-8}px,${N[p.pos].y+(i>2?12:-14)}px)"><circle class="wb" r="9" fill="hsl(${i*60} 90% 55%)" stroke="#000" stroke-width="2.5"/><text y="4" text-anchor="middle" font-size="9" fill="#fff">${esc(p.n[0]||'?')}</text></g>`).join('')}</svg><small>Garis putus-putus = shortcut/jalan alternatif.</small></div>`;
+ h+=`<div class="c">${S.p.map((p,i)=>`<div class="st"><b style="color:hsl(${i*60} 70% 45%)">${i==S.i?'▶ ':''}${esc(p.n)}${p.sk?' ⏸':''}</b><span>💰${rp(p.m)} ❤️${p.k} 😎${p.r} 😊${p.h} ⚡${p.e} 📚${p.ed} 💼${p.job!=null?J[p.job][0]:'-'}</span></div>`).join('')}</div>`;
+ if(mp)h+=`<div class="c">🎒 ${mp.it.length?mp.it.map(i=>IT[i]).join(', '):'belum ada item'}<br>📜 Misi rahasia: ${mp.ms.map(i=>(MS[i][1](mp)?'✅ ':'⬜ ')+MS[i][0]).join(' · ')}</div>`;
+ if(S.ph=='end'){const b=(f)=>[...S.p].sort((x,y)=>f(y)-f(x))[0].n;h+=`<div class="c"><h3>🏆 PLAYER OF THE GAME: ${esc(b(p=>p.sc))}</h3>${[...S.p].sort((x,y)=>y.sc-x.sc).map(p=>esc(p.n)+': <b>'+p.sc+'</b> poin').join('<br>')}<hr>💰 TERKAYA: ${esc(b(p=>p.m))}<br>🎓 PALING TERDIDIK: ${esc(b(p=>p.ed))}<br>💀 PALING SIAL: ${esc(b(p=>p.bad))}<br>🎴 PALING SERING KENA KARTU: ${esc(b(p=>p.cards))}<br>🏃 PALING SERING PINDAH: ${esc(b(p=>p.mvd))}</div>`}
+ else if(S.ph=='roll')h+=mine?`<button class="big" onclick="send('roll')">🎲 ROLL DICE!</button>`:`<div class="c">Giliran ${esc(cur.n)}…</div>`;
+ else if(S.ph=='path')h+=mine?`<div class="c">Pilih jalan (sisa ${S.mv} langkah):<div class="r">${N[cur.pos].nx.map((j,i)=>`<button onclick="send('path',{i:${i}})">${IC[N[j].t]} ${i?'Jalan alternatif':'Jalan lurus'}</button>`).join('')}</div></div>`:`<div class="c">${esc(cur.n)} memilih jalan…</div>`;
+ h+=`<details class="c"><summary>📜 Log (${hist.length})</summary><div class="lg">${[...hist].reverse().map(l=>esc(l[1])).join('<br>')}</div></details>`;
+ a.innerHTML=h;
+ if(S.ph=='card'&&S.card){const c=S.card,f=!tut.has(c.t);tut.add(c.t);const o=document.createElement('div');o.id='ov';o.innerHTML=`<div class="cd" style="background:${CL[c.t]};color:#2b2233"><div style="font-size:40px">${IC[c.t]}</div><b>${esc(c.w)}</b><p>${esc(c.x)}</p>${f&&TT[c.t]?`<small>ℹ️ ${TT[c.t]}</small><br>`:''}${mine?`<button onclick="send('ok')">OKE</button>`:''}</div>`;a.appendChild(o)}}
+draw();
+</script></body></html>
